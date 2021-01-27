@@ -1,14 +1,14 @@
-name: 'Hostloc Auto Get Points'
+name: 'Auto Clocking'
 
 on:
   push:
     branches: 
       - master
   schedule:
-    - cron: '0 17 * * *'
+    - cron: '30 21 * * *'
 
 jobs:
-  get_points:
+  Auto Clocking:
     runs-on: ubuntu-latest
     steps:
     - name: 'Checkout codes'
@@ -16,11 +16,11 @@ jobs:
     - name: 'Set python'
       uses: actions/setup-python@v1
       with:
-        python-version: '3.x'
+        python-version: '3.8'
     - name: 'Install dependencies'
       run: python -m pip install --upgrade requests
-    - name: 'Get points'
+    - name: 'Auto Clocking'
       env:
-        HOSTLOC_USERNAME: ${{ secrets.HOSTLOC_USERNAME }}
-        HOSTLOC_PASSWORD: ${{ secrets.HOSTLOC_PASSWORD }}
-      run: python hostloc_get_points.py
+        USERNAME: ${{ secrets.USERNAME }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+      run: main.py
